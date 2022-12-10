@@ -2,7 +2,6 @@ package com.example.kodetrainee.network.api
 
 import com.example.kodetrainee.network.model.UsersNetworkList
 import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 
 interface ApiNetworkRetrofit {
