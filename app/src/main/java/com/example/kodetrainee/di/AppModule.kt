@@ -1,7 +1,7 @@
 package com.example.kodetrainee.di
 
 import android.content.Context
-import com.example.kodetrainee.App
+import com.example.kodetrainee.presentation.App
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApplication(@ApplicationContext appContext: Context): App{
+    fun provideApplication(@ApplicationContext appContext: Context): App {
         return appContext as App
     }
 }
