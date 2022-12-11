@@ -11,7 +11,7 @@ class UserNetworkMapper: EntityMapper<UserNetworkEntity, User> {
         val result = User()
 
         result.id = userNetworkEntity.id
-        result.avatarUrl = userNetworkEntity.avatarUrl
+        result.avatarUrl = UserFakeAvatarUrlsSet.ava_url_set.shuffled().take(5).shuffled()[2]
         result.firstName = userNetworkEntity.firstName
         result.lastName = userNetworkEntity.lastName
         result.userTag = userNetworkEntity.userTag
