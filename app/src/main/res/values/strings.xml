@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">KODE Trainee</string>
+
+    <string name="department_name_unknown">Unknown Department</string>
+    <string name="department_name_android">Android</string>
+    <string name="department_name_ios">Ios</string>
+    <string name="department_name_design">Design</string>
+    <string name="department_name_management">Management</string>
+    <string name="department_name_qa">Qa</string>
+    <string name="department_name_back_office">Back Office</string>
+    <string name="department_name_frontend">Frontend</string>
+    <string name="department_name_hr">Hr</string>
+    <string name="department_name_Pr">Pr</string>
+    <string name="department_name_backend">Backend</string>
+    <string name="department_name_support">Support</string>
+    <string name="department_name_analytics">Analytics</string>
 </resources>

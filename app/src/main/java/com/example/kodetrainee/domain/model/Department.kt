@@ -1,17 +1,19 @@
 package com.example.kodetrainee.domain.model
 
-sealed class Department(val name: String) {
-    class Unknown : Department("")
-    class Android : Department("android")
-    class Ios : Department("ios")
-    class Design : Department("design")
-    class Management : Department("management")
-    class Qa : Department("qa")
-    class BackOffice : Department("back_office")
-    class Frontend : Department("frontend")
-    class Hr : Department("hr")
-    class Pr : Department("pr")
-    class Backend : Department("backend")
-    class Support : Department("support")
-    class Analytics : Department("analytics")
+import com.example.kodetrainee.R
+
+sealed class Department(val nameResourceId: Int) {
+    class Unknown : Department(R.string.department_name_unknown)
+    class Android : Department(R.string.department_name_android)
+    class Ios : Department(R.string.department_name_ios)
+    class Design : Department(R.string.department_name_design)
+    class Management : Department(R.string.department_name_management)
+    class Qa : Department(R.string.department_name_qa)
+    class BackOffice : Department(R.string.department_name_back_office)
+    class Frontend : Department(R.string.department_name_frontend)
+    class Hr : Department(R.string.department_name_hr)
+    class Pr : Department(R.string.department_name_Pr)
+    class Backend : Department(R.string.department_name_backend)
+    class Support : Department(R.string.department_name_support)
+    class Analytics : Department(R.string.department_name_analytics)
 }
