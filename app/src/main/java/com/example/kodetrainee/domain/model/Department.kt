@@ -1,9 +1,13 @@
 package com.example.kodetrainee.domain.model
 
+import android.os.Parcelable
 import com.example.kodetrainee.R
+import kotlinx.parcelize.Parcelize
 
-sealed class Department(val nameResourceId: Int) {
+@Parcelize
+sealed class Department(val nameResourceId: Int) : Parcelable {
     class Unknown : Department(R.string.department_name_unknown)
+    class All : Department(R.string.department_name_all)
     class Android : Department(R.string.department_name_android)
     class Ios : Department(R.string.department_name_ios)
     class Design : Department(R.string.department_name_design)

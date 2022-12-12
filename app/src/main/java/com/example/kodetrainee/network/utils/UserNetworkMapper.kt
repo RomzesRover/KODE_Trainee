@@ -37,7 +37,14 @@ class UserNetworkMapper: EntityMapper<UserNetworkEntity, User> {
         return result
     }
 
-    override fun mapFromNetworkEntityListToDomainModelList(userNetworkEntityList: List<UserNetworkEntity>): List<User> {
-        return userNetworkEntityList.map { mapFromNetworkEntityToDomainModel(it) }
+    override fun mapFromNetworkEntityListToDomainModelList(userNetworkEntityList: List<UserNetworkEntity>, department: Department): List<User> {
+        return userNetworkEntityList.mapNotNull {
+            val domainModel = mapFromNetworkEntityToDomainModel(it)
+
+            if ((department is Department.All) || domainModel.department::class == department:: class)
+                domainModel
+            else
+                null
+        }
     }
 }

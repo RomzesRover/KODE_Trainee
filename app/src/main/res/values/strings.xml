@@ -2,6 +2,7 @@
     <string name="app_name">KODE Trainee</string>
 
     <string name="department_name_unknown">Unknown Department</string>
+    <string name="department_name_all">All</string>
     <string name="department_name_android">Android</string>
     <string name="department_name_ios">Ios</string>
     <string name="department_name_design">Design</string>

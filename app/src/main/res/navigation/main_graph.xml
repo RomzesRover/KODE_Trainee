@@ -2,7 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_graph"
-    app:startDestination="@id/userListFragment">
+    app:startDestination="@id/userListByTabsFragment">
+
+    <fragment
+        android:id="@+id/userListByTabsFragment"
+        android:name="com.example.kodetrainee.presentation.user_list_by_tabs.UserListByTabsFragment"
+        android:label="UserListByTabsFragment" />
 
     <fragment
         android:id="@+id/userListFragment"
