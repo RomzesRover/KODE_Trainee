@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/list_item_user_margin_top"
+    android:layout_marginBottom="@dimen/list_item_user_margin_bottom"
+    android:layout_marginStart="@dimen/list_item_user_margin_start"
+    android:layout_marginEnd="@dimen/list_item_user_margin_end">
+
+    <ImageView
+        android:id="@+id/userItemAvatar"
+        android:layout_width="@dimen/list_item_user_avatar_size"
+        android:layout_height="@dimen/list_item_user_avatar_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/userItemFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_user_first_name_margin_start"
+        android:layout_marginBottom="@dimen/list_item_user_first_name_margin_bottom"
+        android:fontFamily="@font/inter_medium"
+        app:fontFamily="@font/inter_medium"
+        android:textColor="@color/list_item_user_first_name_text_color"
+        android:textSize="@dimen/list_item_user_first_name_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/userItemAvatar" />
+
+    <TextView
+        android:id="@+id/userItemLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_user_last_name_margin_start"
+        android:layout_marginBottom="@dimen/list_item_user_last_name_margin_bottom"
+        android:fontFamily="@font/inter_medium"
+        app:fontFamily="@font/inter_medium"
+        android:textColor="@color/list_item_user_last_name_text_color"
+        android:textSize="@dimen/list_item_user_last_name_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/userItemFirstName" />
+
+    <TextView
+        android:id="@+id/userItemTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_user_tag_margin_start"
+        android:fontFamily="@font/inter_medium"
+        app:fontFamily="@font/inter_medium"
+        android:textColor="@color/list_item_user_tag_text_color"
+        android:textSize="@dimen/list_item_user_tag_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/userItemLastName" />
+
+    <TextView
+        android:id="@+id/userItemDepartment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_user_department_margin_start"
+        android:layout_marginTop="@dimen/list_item_user_department_margin_top"
+        android:fontFamily="@font/inter"
+        app:fontFamily="@font/inter"
+        android:textColor="@color/list_item_user_department_text_color"
+        android:textSize="@dimen/list_item_user_department_text_size"
+        app:layout_constraintStart_toEndOf="@+id/userItemAvatar"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

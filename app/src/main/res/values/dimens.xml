@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="list_item_user_margin_top">6dp</dimen>
+    <dimen name="list_item_user_margin_bottom">7dp</dimen>
+    <dimen name="list_item_user_margin_start">18dp</dimen>
+    <dimen name="list_item_user_margin_end">16dp</dimen>
+    <dimen name="list_item_user_avatar_size">79dp</dimen>
+    <dimen name="list_item_user_first_name_margin_start">17dp</dimen>
+    <dimen name="list_item_user_first_name_margin_bottom">-1dp</dimen>
+    <dimen name="list_item_user_first_name_text_size">17sp</dimen>
+    <dimen name="list_item_user_last_name_margin_start">3dp</dimen>
+    <dimen name="list_item_user_last_name_margin_bottom">-1dp</dimen>
+    <dimen name="list_item_user_last_name_text_size">17sp</dimen>
+    <dimen name="list_item_user_tag_margin_start">3dp</dimen>
+    <dimen name="list_item_user_tag_text_size">15sp</dimen>
+    <dimen name="list_item_user_department_margin_start">17dp</dimen>
+    <dimen name="list_item_user_department_margin_top">2dp</dimen>
+    <dimen name="list_item_user_department_text_size">14sp</dimen>
+
+</resources>
