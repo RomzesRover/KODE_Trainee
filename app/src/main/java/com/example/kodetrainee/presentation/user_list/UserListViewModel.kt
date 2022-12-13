@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.kodetrainee.domain.model.Department
 import com.example.kodetrainee.domain.model.User
+import com.example.kodetrainee.presentation.user_list.UserListFragment.Companion.REQUIRED_DEPARTMENT_KEY
 import com.example.kodetrainee.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -17,10 +18,6 @@ import javax.inject.Inject
 @HiltViewModel
 class UserListViewModel @Inject constructor(private val userRepository: UserRepository, private val state: SavedStateHandle): ViewModel() {
 
-    companion object {
-        const val REQUIRED_DEPARTMENT_KEY = "UserListViewModel:REQUIRED_DEPARTMENT_KEY"
-    }
-
     private val disposableBag = CompositeDisposable()
 
     private var disposableGetUserList: Disposable? = null
@@ -29,9 +26,23 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
 
     private lateinit var requiredUserDepartment: Department
 
+    private var isBackgroundLoadAllowed = true
+    private val scheduledUnitsList: ArrayList<() -> (Unit)> = arrayListOf()
+
     init {
         getRequiredUserDepartment()
         getUserList()
+    }
+
+    fun setIsBackgroundLoadAllowed(allowed: Boolean){
+        isBackgroundLoadAllowed = allowed
+
+        if (allowed){
+            scheduledUnitsList.forEach {
+                it.invoke()
+            }
+            scheduledUnitsList.clear()
+        }
     }
 
     private fun getRequiredUserDepartment(){
@@ -39,6 +50,11 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
     }
 
     private fun getUserList() {
+        if (!isBackgroundLoadAllowed){
+            scheduledUnitsList.add { getUserList() }
+            return
+        }
+
         disposableGetUserList?.dispose()
 
         disposableGetUserList = userRepository.getUserList(requiredUserDepartment)
@@ -54,6 +70,11 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
     }
 
     private fun onSuccessLoadUserList(userList: List<User>){
+        if (!isBackgroundLoadAllowed){
+            scheduledUnitsList.add { onSuccessLoadUserList(userList) }
+            return
+        }
+
         userListMutable.value = userList
     }
 
