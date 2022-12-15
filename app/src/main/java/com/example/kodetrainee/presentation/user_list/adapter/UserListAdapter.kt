@@ -1,22 +1,21 @@
 package com.example.kodetrainee.presentation.user_list.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kodetrainee.databinding.ListItemUserBinding
 import com.example.kodetrainee.domain.model.User
 
 class UserListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var userListShowing: ArrayList<User> = ArrayList()
+    private var userListShowing: ArrayList<User> = arrayListOf()
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setupUserList(newList: List<User>){
+        val diffResult = DiffUtil.calculateDiff(UserListDiffUtil(userListShowing, newList))
         userListShowing.clear()
         userListShowing.addAll(newList)
-        // TODO: Use diff util: possible delete notify data set changed
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
