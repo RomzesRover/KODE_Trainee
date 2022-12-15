@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
+import com.example.kodetrainee.R
 import com.example.kodetrainee.databinding.FragmentUserListByTabsBinding
 import com.example.kodetrainee.domain.model.Department
 import com.example.kodetrainee.presentation.MainActivityViewModel
 import com.example.kodetrainee.presentation.user_list_by_tabs.adapter.UserListByTabsStateAdapter
+import jp.co.cyberagent.android.tabanimation.setupAnimationTabWithViewPager
+import jp.co.cyberagent.android.tabanimation.viewIdAnimationInfo
 
 class UserListByTabsFragment: Fragment() {
 
@@ -39,7 +43,30 @@ class UserListByTabsFragment: Fragment() {
         pagerAdapter = UserListByTabsStateAdapter(this, departmentsList)
         binding.userListPager.offscreenPageLimit = offscreenPageLimit
         binding.userListPager.adapter = pagerAdapter
+
+        initTabLayoutWithViewPager(departmentsList)
         handleDragging()
+    }
+
+    private fun initTabLayoutWithViewPager(departmentsList: ArrayList<Department>){
+        val animationInfo = viewIdAnimationInfo {
+            animate<TextView, Float>(R.id.listItemCustomTabTextSelected) {
+                property(View.ALPHA)
+                startValue(0f)
+                endValue(1f)
+            }
+            animate<TextView, Float>(R.id.listItemCustomTabTextUnSelected) {
+                property(View.ALPHA)
+                startValue(1f)
+                endValue(0f)
+            }
+        }
+
+        binding.tabLayout.setupAnimationTabWithViewPager(binding.userListPager, animationInfo, R.layout.list_item_custom_tab){ tab, view, position ->
+            view.findViewById<TextView>(R.id.listItemCustomTabTextSelected).text = getString(departmentsList[position].nameResourceId)
+            view.findViewById<TextView>(R.id.listItemCustomTabTextUnSelected).text = getString(departmentsList[position].nameResourceId)
+            tab.text = getString(departmentsList[position].nameResourceId)
+        }
     }
 
     private fun startObserveViewModel(){
@@ -56,7 +83,9 @@ class UserListByTabsFragment: Fragment() {
                     ViewPager2.SCROLL_STATE_DRAGGING, ViewPager2.SCROLL_STATE_SETTLING -> {
                         activityViewModel.rejectBackgroundHeavyLoad()
                     }
-                    ViewPager2.SCROLL_STATE_IDLE -> activityViewModel.allowBackgroundHeavyLoad()
+                    ViewPager2.SCROLL_STATE_IDLE -> {
+                        activityViewModel.allowBackgroundHeavyLoad()
+                    }
                 }
             }
         })

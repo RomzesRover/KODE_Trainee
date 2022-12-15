@@ -17,18 +17,18 @@ class UserListByTabsViewModel: ViewModel() {
     private fun createDepartmentsList() {
         val list = arrayListOf(
             Department.All(),
+            Department.Design(),
+            Department.Analytics(),
+            Department.Management(),
             Department.Android(),
             Department.Ios(),
-            Department.Design(),
-            Department.Management(),
             Department.Qa(),
             Department.BackOffice(),
             Department.Frontend(),
             Department.Hr(),
             Department.Pr(),
             Department.Backend(),
-            Department.Support(),
-            Department.Analytics()
+            Department.Support()
         )
 
         departmentsListMutable.value = list

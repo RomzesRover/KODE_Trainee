@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/font/list_item_custom_tab_font_selector.xml" value="0.1421875" />
         <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/fragment_user_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/fragment_user_list_by_tabs.xml" value="0.2513586956521739" />
+        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/fragment_user_list_by_tabs.xml" value="0.264" />
         <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/fragment_user_profile.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/list_item_custom_tab.xml" value="1.728" />
+        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/list_item_custom_tab_selected.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/list_item_custom_tab_unselected.xml" value="0.2" />
         <entry key="..\:/Users/Roman/AndroidStudioProjects/KODETrainee/app/src/main/res/layout/list_item_user.xml" value="0.1956521739130435" />
       </map>
     </option>
