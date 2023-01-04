@@ -11,6 +11,10 @@ data class User (
     var birthday: String = "",
     var phone: String = ""
 ) {
+    fun getFullName(): String{
+        return "$firstName $lastName"
+    }
+
     override fun equals(other: Any?): Boolean {
 
         if (javaClass != other?.javaClass)

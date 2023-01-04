@@ -15,4 +15,6 @@
     <string name="department_name_backend">Backend</string>
     <string name="department_name_support">Support</string>
     <string name="department_name_analytics">Analytics</string>
+
+    <string name="fragment_user_list_by_tabs_search_view_hint">Enter name, tag…</string>
 </resources>

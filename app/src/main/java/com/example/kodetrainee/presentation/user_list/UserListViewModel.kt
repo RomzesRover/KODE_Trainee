@@ -23,6 +23,7 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
     private var disposableGetUserList: Disposable? = null
     private val userListMutable = MutableLiveData<List<User>>()
     val userList: LiveData<List<User>> = userListMutable
+    private var lastLoadedUserList: ArrayList<User> = arrayListOf()
 
     private lateinit var requiredUserDepartment: Department
 
@@ -42,6 +43,34 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
                 it.invoke()
             }
             scheduledUnitsList.clear()
+        }
+    }
+
+    fun filterListByString(query: String, requiredDepartmentListFilter: Department) {
+        if (!isBackgroundLoadAllowed){
+            scheduledUnitsList.add { filterListByString(query, requiredDepartmentListFilter) }
+            return
+        }
+
+        if (requiredDepartmentListFilter::class == requiredUserDepartment::class && lastLoadedUserList.isNotEmpty()) {
+            val filteredList: ArrayList<User> = arrayListOf()
+
+            // Do not filter list if the query is empty or blank
+            if (query.isBlank() || query.isEmpty()){
+                // Do not send new list to adapter if there wasn't any queries before
+                if (lastLoadedUserList.size != userListMutable.value?.size) {
+                    filteredList.addAll(lastLoadedUserList)
+                    userListMutable.value = filteredList
+                }
+                return
+            }
+
+            lastLoadedUserList.forEach {
+                if ((it.getFullName().contains(query, true)) || it.userTag.contains(query, true)){
+                    filteredList.add(it)
+                }
+            }
+            userListMutable.value = filteredList
         }
     }
 
@@ -74,6 +103,9 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
             scheduledUnitsList.add { onSuccessLoadUserList(userList) }
             return
         }
+
+        lastLoadedUserList.clear()
+        lastLoadedUserList.addAll(userList)
 
         userListMutable.value = userList
     }

@@ -3,11 +3,21 @@
 
     <dimen name="fragment_user_list_padding_top_bottom">18.5dip</dimen>
 
+    <dimen name="fragment_user_list_by_tabs_top_action_layout_background_radius">18dp</dimen>
+    <dimen name="fragment_user_list_by_tabs_top_action_layout_height">44dp</dimen>
+    <dimen name="fragment_user_list_by_tabs_top_action_layout_margin_top">24.5dip</dimen>
+    <dimen name="fragment_user_list_by_tabs_top_action_layout_margin_start_end">18dp</dimen>
+
+    <dimen name="fragment_user_list_by_tabs_search_view_padding_start">-3dp</dimen>
+    <dimen name="fragment_user_list_by_tabs_search_view_search_icon_size">26.5dip</dimen>
+    <dimen name="fragment_user_list_by_tabs_search_view_text_size">16sp</dimen>
+
     <dimen name="fragment_user_list_by_tabs_tab_layout_underline_height">0.5dip</dimen>
     <dimen name="fragment_user_list_by_tabs_tab_padding_start_end">13.5dip</dimen>
     <dimen name="fragment_user_list_by_tabs_tab_padding_bottom">-7dp</dimen>
     <dimen name="fragment_user_list_by_tabs_tab_min_width">0dp</dimen>
     <dimen name="fragment_user_list_by_tabs_tab_content_start">31dp</dimen>
+    <dimen name="fragment_user_list_by_tabs_tab_layout_margin_top">7dp</dimen>
 
     <dimen name="list_item_custom_tab_selected_text_size">16sp</dimen>
     <dimen name="list_item_custom_tab_unselected_text_size">16sp</dimen>
@@ -17,12 +27,9 @@
     <dimen name="list_item_user_margin_start">18dp</dimen>
     <dimen name="list_item_user_margin_end">16dp</dimen>
     <dimen name="list_item_user_avatar_size">79dp</dimen>
-    <dimen name="list_item_user_first_name_margin_start">17dp</dimen>
-    <dimen name="list_item_user_first_name_margin_bottom">-1dp</dimen>
-    <dimen name="list_item_user_first_name_text_size">17sp</dimen>
-    <dimen name="list_item_user_last_name_margin_start">3dp</dimen>
-    <dimen name="list_item_user_last_name_margin_bottom">-1dp</dimen>
-    <dimen name="list_item_user_last_name_text_size">17sp</dimen>
+    <dimen name="list_item_user_full_name_margin_start">17dp</dimen>
+    <dimen name="list_item_user_full_name_margin_bottom">-1dp</dimen>
+    <dimen name="list_item_user_full_name_text_size">17sp</dimen>
     <dimen name="list_item_user_tag_margin_start">3dp</dimen>
     <dimen name="list_item_user_tag_text_size">15sp</dimen>
     <dimen name="list_item_user_department_margin_start">17dp</dimen>

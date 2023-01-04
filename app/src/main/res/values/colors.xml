@@ -8,14 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="fragment_user_list_by_tabs_top_action_layout_color">#F7F7F8</color>
+
+    <color name="fragment_user_list_by_tabs_search_view_edit_text_color">#050510</color>
+    <color name="fragment_user_list_by_tabs_search_view_hint_text_color">#C3C3C6</color>
+    <color name="fragment_user_list_by_tabs_search_view_search_icon_active_color">#050510</color>
+    <color name="fragment_user_list_by_tabs_search_view_search_icon_inactive_color">#C3C3C6</color>
+
     <color name="fragment_user_list_by_tabs_tab_indicator_color">#6534FF</color>
     <color name="fragment_user_list_by_tabs_tab_layout_underline_color">#C3C3C6</color>
 
     <color name="list_item_custom_tab_selected_text_color">#050510</color>
     <color name="list_item_custom_tab_unselected_text_color">#97979B</color>
 
-    <color name="list_item_user_first_name_text_color">#050510</color>
-    <color name="list_item_user_last_name_text_color">#050510</color>
+    <color name="list_item_user_full_name_text_color">#050510</color>
     <color name="list_item_user_tag_text_color">#97979B</color>
     <color name="list_item_user_department_text_color">#55555C</color>
 </resources>

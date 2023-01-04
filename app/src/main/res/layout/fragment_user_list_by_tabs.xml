@@ -4,13 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topActionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_user_list_by_tabs_top_action_layout_height"
+        android:layout_marginTop="@dimen/fragment_user_list_by_tabs_top_action_layout_margin_top"
+        android:layout_marginStart="@dimen/fragment_user_list_by_tabs_top_action_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/fragment_user_list_by_tabs_top_action_layout_margin_start_end"
+        android:background="@drawable/fragment_user_list_by_tabs_top_action_layout_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/topSearchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/SearchViewStyle"
+            android:background="@android:color/transparent"
+            android:paddingStart="@dimen/fragment_user_list_by_tabs_search_view_padding_start"
+            app:searchIcon="@mipmap/ic_app_bar_search"
+            app:queryHint="@string/fragment_user_list_by_tabs_search_view_hint"
+            app:queryBackground="@android:color/transparent"
+            app:submitBackground="@android:color/transparent"
+            app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_user_list_by_tabs_tab_layout_margin_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topActionLayout"
         app:tabContentStart="@dimen/fragment_user_list_by_tabs_tab_content_start"
         app:tabIndicatorColor="@color/fragment_user_list_by_tabs_tab_indicator_color"
         app:tabIndicatorFullWidth="true"

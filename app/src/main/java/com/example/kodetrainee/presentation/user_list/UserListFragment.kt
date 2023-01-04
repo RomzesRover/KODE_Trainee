@@ -13,6 +13,7 @@ import com.example.kodetrainee.databinding.FragmentUserListBinding
 import com.example.kodetrainee.domain.model.Department
 import com.example.kodetrainee.presentation.MainActivityViewModel
 import com.example.kodetrainee.presentation.user_list.adapter.UserListAdapter
+import com.example.kodetrainee.presentation.user_list_by_tabs.UserListByTabsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +32,7 @@ class UserListFragment: Fragment() {
 
     private val viewModel: UserListViewModel by viewModels()
     private val activityViewModel: MainActivityViewModel by activityViewModels()
+    private val userListByTabsViewModel: UserListByTabsViewModel by activityViewModels()
 
     private val userListAdapter = UserListAdapter()
 
@@ -68,6 +70,10 @@ class UserListFragment: Fragment() {
     private fun startObserveActivityViewModel(){
         activityViewModel.backgroundHeavyLoad.observe(viewLifecycleOwner){
             viewModel.setIsBackgroundLoadAllowed(it)
+        }
+
+        userListByTabsViewModel.searchQuery.observe(viewLifecycleOwner){
+            viewModel.filterListByString(it.first, it.second)
         }
     }
 

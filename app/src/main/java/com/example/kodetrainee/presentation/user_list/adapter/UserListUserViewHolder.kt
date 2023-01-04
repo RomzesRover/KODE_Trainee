@@ -10,8 +10,7 @@ import com.example.kodetrainee.domain.model.User
 class UserListUserViewHolder(private val itemBinding: ListItemUserBinding): RecyclerView.ViewHolder(itemBinding.root) {
 
     fun setupUserItem(user: User){
-        itemBinding.userItemFirstName.text = user.firstName
-        itemBinding.userItemLastName.text = user.lastName
+        itemBinding.userItemFullName.text = user.getFullName()
         itemBinding.userItemTag.text = user.userTag.lowercase()
         itemBinding.userItemDepartment.text = itemView.context.getString(user.department.nameResourceId)
 

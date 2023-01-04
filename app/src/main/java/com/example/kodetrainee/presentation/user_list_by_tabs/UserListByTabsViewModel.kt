@@ -33,4 +33,26 @@ class UserListByTabsViewModel: ViewModel() {
 
         departmentsListMutable.value = list
     }
+
+    private val searchQueryMutable = MutableLiveData<Pair<String, Department>>()
+    val searchQuery: LiveData<Pair<String, Department>> = searchQueryMutable
+
+    private val searchStateActiveMutable = MutableLiveData<Any?>()
+    val searchStateActive: LiveData<Any?> = searchStateActiveMutable
+    private val searchStateInactiveMutable = MutableLiveData<Any?>()
+    val searchStateInactive: LiveData<Any?> = searchStateInactiveMutable
+
+    fun newSearchQuery(query: String?, currentPosition: Int){
+        val requiredDepartmentFilter = departmentsList.value?.get(currentPosition)
+
+        if (requiredDepartmentFilter != null && query != null) {
+            searchQueryMutable.value = Pair(query, requiredDepartmentFilter)
+
+            if (query.isBlank() || query.isEmpty()){
+                searchStateInactiveMutable.value = null
+            } else {
+                searchStateActiveMutable.value = null
+            }
+        }
+    }
 }

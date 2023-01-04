@@ -26,30 +26,17 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <TextView
-        android:id="@+id/userItemFirstName"
+        android:id="@+id/userItemFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/list_item_user_first_name_margin_start"
-        android:layout_marginBottom="@dimen/list_item_user_first_name_margin_bottom"
+        android:layout_marginStart="@dimen/list_item_user_full_name_margin_start"
+        android:layout_marginBottom="@dimen/list_item_user_full_name_margin_bottom"
         android:fontFamily="@font/inter_medium"
         app:fontFamily="@font/inter_medium"
-        android:textColor="@color/list_item_user_first_name_text_color"
-        android:textSize="@dimen/list_item_user_first_name_text_size"
+        android:textColor="@color/list_item_user_full_name_text_color"
+        android:textSize="@dimen/list_item_user_full_name_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/userItemAvatar" />
-
-    <TextView
-        android:id="@+id/userItemLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/list_item_user_last_name_margin_start"
-        android:layout_marginBottom="@dimen/list_item_user_last_name_margin_bottom"
-        android:fontFamily="@font/inter_medium"
-        app:fontFamily="@font/inter_medium"
-        android:textColor="@color/list_item_user_last_name_text_color"
-        android:textSize="@dimen/list_item_user_last_name_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/userItemFirstName" />
 
     <TextView
         android:id="@+id/userItemTag"
@@ -61,7 +48,7 @@
         android:textColor="@color/list_item_user_tag_text_color"
         android:textSize="@dimen/list_item_user_tag_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/userItemLastName" />
+        app:layout_constraintStart_toEndOf="@+id/userItemFullName" />
 
     <TextView
         android:id="@+id/userItemDepartment"

@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.kodetrainee.R
 import com.example.kodetrainee.databinding.FragmentUserListByTabsBinding
@@ -19,10 +22,11 @@ import jp.co.cyberagent.android.tabanimation.viewIdAnimationInfo
 
 class UserListByTabsFragment: Fragment() {
 
-    private val viewModel: UserListByTabsViewModel by viewModels()
+    private val viewModel: UserListByTabsViewModel by activityViewModels()
     private val activityViewModel: MainActivityViewModel by activityViewModels()
 
     private lateinit var pagerAdapter: UserListByTabsStateAdapter
+    private lateinit var viewPagerOnPageChangeCallback: ViewPager2.OnPageChangeCallback
     private val offscreenPageLimit: Int = 5
 
     private var _binding: FragmentUserListByTabsBinding? = null
@@ -37,6 +41,21 @@ class UserListByTabsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         startObserveViewModel()
+        handleSearchAction()
+        initSearchViewAppearance()
+    }
+
+    private fun initSearchViewAppearance(){
+        val searchIcon = binding.topSearchEditText.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+
+        searchIcon.setColorFilter(
+            ContextCompat.getColor(requireContext(), R.color.fragment_user_list_by_tabs_search_view_search_icon_inactive_color),
+            android.graphics.PorterDuff.Mode.SRC_IN)
+
+        searchIcon.updateLayoutParams {
+            width = resources.getDimensionPixelSize(R.dimen.fragment_user_list_by_tabs_search_view_search_icon_size)
+            height = resources.getDimensionPixelSize(R.dimen.fragment_user_list_by_tabs_search_view_search_icon_size)
+        }
     }
 
     private fun initUserListPager(departmentsList: ArrayList<Department>){
@@ -45,7 +64,7 @@ class UserListByTabsFragment: Fragment() {
         binding.userListPager.adapter = pagerAdapter
 
         initTabLayoutWithViewPager(departmentsList)
-        handleDragging()
+        handlePagerActions()
     }
 
     private fun initTabLayoutWithViewPager(departmentsList: ArrayList<Department>){
@@ -73,10 +92,18 @@ class UserListByTabsFragment: Fragment() {
         viewModel.departmentsList.observe(viewLifecycleOwner) {
             initUserListPager(it)
         }
+
+        viewModel.searchStateActive.observe(viewLifecycleOwner){
+            setSearchIconToActive()
+        }
+
+        viewModel.searchStateInactive.observe(viewLifecycleOwner){
+            setSearchIconToInactive()
+        }
     }
 
-    private fun handleDragging() {
-        binding.userListPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+    private fun handlePagerActions() {
+        viewPagerOnPageChangeCallback = object : ViewPager2.OnPageChangeCallback(){
             override fun onPageScrollStateChanged(state: Int) {
                 super.onPageScrollStateChanged(state)
                 when (state){
@@ -88,11 +115,55 @@ class UserListByTabsFragment: Fragment() {
                     }
                 }
             }
+
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                cancelSearchQuery(position)
+            }
+        }
+
+        binding.userListPager.registerOnPageChangeCallback(viewPagerOnPageChangeCallback)
+    }
+
+    private fun cancelSearchQuery(position: Int){
+        binding.topSearchEditText.setQuery("", false)
+        binding.topSearchEditText.clearFocus()
+        viewModel.newSearchQuery("", position)
+    }
+
+    private fun handleSearchAction(){
+        binding.topSearchEditText.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.topSearchEditText.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.newSearchQuery(newText, binding.userListPager.currentItem)
+                return false
+            }
         })
+    }
+
+    private fun setSearchIconToActive(){
+        val searchIcon = binding.topSearchEditText.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+
+        searchIcon.setColorFilter(
+            ContextCompat.getColor(requireContext(), R.color.fragment_user_list_by_tabs_search_view_search_icon_active_color),
+            android.graphics.PorterDuff.Mode.SRC_IN)
+    }
+
+    private fun setSearchIconToInactive(){
+        val searchIcon = binding.topSearchEditText.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+
+        searchIcon.setColorFilter(
+            ContextCompat.getColor(requireContext(), R.color.fragment_user_list_by_tabs_search_view_search_icon_inactive_color),
+            android.graphics.PorterDuff.Mode.SRC_IN)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.userListPager.unregisterOnPageChangeCallback(viewPagerOnPageChangeCallback)
         _binding = null
     }
 }
