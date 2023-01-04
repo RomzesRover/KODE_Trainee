@@ -65,6 +65,14 @@ class UserListFragment: Fragment() {
         viewModel.userList.observe(viewLifecycleOwner) {
             userListAdapter.setupUserList(it)
         }
+
+        viewModel.searchResultEmpty.observe(viewLifecycleOwner){
+            showSearchResultEmptyMessage()
+        }
+
+        viewModel.searchResultNotEmpty.observe(viewLifecycleOwner){
+            hideSearchResultEmptyMessage()
+        }
     }
 
     private fun startObserveActivityViewModel(){
@@ -75,6 +83,14 @@ class UserListFragment: Fragment() {
         userListByTabsViewModel.searchQuery.observe(viewLifecycleOwner){
             viewModel.filterListByString(it.first, it.second)
         }
+    }
+
+    private fun showSearchResultEmptyMessage(){
+        binding.userListEmptyMessageLayout.visibility = View.VISIBLE
+    }
+
+    private fun hideSearchResultEmptyMessage(){
+        binding.userListEmptyMessageLayout.visibility = View.GONE
     }
 
     override fun onDestroyView() {

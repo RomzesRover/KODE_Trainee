@@ -18,6 +18,9 @@
     <color name="fragment_user_list_by_tabs_tab_indicator_color">#6534FF</color>
     <color name="fragment_user_list_by_tabs_tab_layout_underline_color">#C3C3C6</color>
 
+    <color name="fragment_user_list_empty_message_one_text_color">#050510</color>
+    <color name="fragment_user_list_empty_message_two_text_color">#97979B</color>
+
     <color name="list_item_custom_tab_selected_text_color">#050510</color>
     <color name="list_item_custom_tab_unselected_text_color">#97979B</color>
 

@@ -21,9 +21,15 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
     private val disposableBag = CompositeDisposable()
 
     private var disposableGetUserList: Disposable? = null
+
     private val userListMutable = MutableLiveData<List<User>>()
     val userList: LiveData<List<User>> = userListMutable
     private var lastLoadedUserList: ArrayList<User> = arrayListOf()
+
+    private val searchResultEmptyMutable = MutableLiveData<Any?>()
+    val searchResultEmpty: LiveData<Any?> = searchResultEmptyMutable
+    private val searchResultNotEmptyMutable = MutableLiveData<Any?>()
+    val searchResultNotEmpty: LiveData<Any?> = searchResultNotEmptyMutable
 
     private lateinit var requiredUserDepartment: Department
 
@@ -62,6 +68,7 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
                     filteredList.addAll(lastLoadedUserList)
                     userListMutable.value = filteredList
                 }
+                searchResultNotEmptyMutable.value = null
                 return
             }
 
@@ -70,6 +77,13 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
                     filteredList.add(it)
                 }
             }
+
+            if (filteredList.isEmpty()){
+                searchResultEmptyMutable.value = null
+            } else {
+                searchResultNotEmptyMutable.value = null
+            }
+
             userListMutable.value = filteredList
         }
     }

@@ -19,6 +19,12 @@
     <dimen name="fragment_user_list_by_tabs_tab_content_start">31dp</dimen>
     <dimen name="fragment_user_list_by_tabs_tab_layout_margin_top">7dp</dimen>
 
+    <dimen name="fragment_user_list_empty_message_icon_size">61dp</dimen>
+    <dimen name="fragment_user_list_empty_message_one_text_size">19sp</dimen>
+    <dimen name="fragment_user_list_empty_message_one_margin_top">7dp</dimen>
+    <dimen name="fragment_user_list_empty_message_two_text_size">17sp</dimen>
+    <dimen name="fragment_user_list_empty_message_two_margin_top">10dp</dimen>
+
     <dimen name="list_item_custom_tab_selected_text_size">16sp</dimen>
     <dimen name="list_item_custom_tab_unselected_text_size">16sp</dimen>
 

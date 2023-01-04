@@ -17,4 +17,7 @@
     <string name="department_name_analytics">Analytics</string>
 
     <string name="fragment_user_list_by_tabs_search_view_hint">Enter name, tag…</string>
+
+    <string name="fragment_user_list_empty_message_one">We didn\'t find anyone</string>
+    <string name="fragment_user_list_empty_message_two">Try editing your request</string>
 </resources>

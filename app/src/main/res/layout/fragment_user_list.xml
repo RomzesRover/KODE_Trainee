@@ -16,4 +16,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
+
+    <LinearLayout
+        android:id="@+id/userListEmptyMessageLayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3">
+
+        <ImageView
+            android:layout_width="@dimen/fragment_user_list_empty_message_icon_size"
+            android:layout_height="@dimen/fragment_user_list_empty_message_icon_size"
+            android:src="@mipmap/ic_empty_search_result"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_user_list_empty_message_one"
+            android:layout_marginTop="@dimen/fragment_user_list_empty_message_one_margin_top"
+            android:textSize="@dimen/fragment_user_list_empty_message_one_text_size"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/fragment_user_list_empty_message_one_text_color"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_user_list_empty_message_two"
+            android:layout_marginTop="@dimen/fragment_user_list_empty_message_two_margin_top"
+            android:textSize="@dimen/fragment_user_list_empty_message_two_text_size"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/fragment_user_list_empty_message_two_text_color"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
