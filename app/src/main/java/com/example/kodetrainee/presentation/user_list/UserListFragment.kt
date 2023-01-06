@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kodetrainee.R
 import com.example.kodetrainee.databinding.FragmentUserListBinding
 import com.example.kodetrainee.domain.model.Department
 import com.example.kodetrainee.presentation.MainActivityViewModel
@@ -20,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class UserListFragment: Fragment() {
 
     companion object {
+        const val SKELETON_ITEMS_SIZE = 15
         const val REQUIRED_DEPARTMENT_KEY = "UserListViewModel:REQUIRED_DEPARTMENT_KEY"
 
         @JvmStatic
@@ -55,15 +57,25 @@ class UserListFragment: Fragment() {
 
     private fun initUserListRecyclerView(){
         binding.userListRecyclerView.apply {
-            adapter = userListAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            setHasFixedSize(true)
+
+            val paddingTopBottom = resources.getDimensionPixelSize(R.dimen.fragment_user_list_padding_top_bottom)
+            getRecyclerView().setPadding(0, paddingTopBottom, 0, paddingTopBottom)
+            getRecyclerView().clipToPadding = false
+            getRecyclerView().setHasFixedSize(true)
+
+            getVeiledRecyclerView().setPadding(0, paddingTopBottom, 0, paddingTopBottom)
+            getVeiledRecyclerView().clipToPadding = false
+
+            setAdapter(userListAdapter)
+            setLayoutManager(LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false))
+            addVeiledItems(SKELETON_ITEMS_SIZE)
         }
     }
 
     private fun startObserveViewModel(){
         viewModel.userList.observe(viewLifecycleOwner) {
             userListAdapter.setupUserList(it)
+            binding.userListRecyclerView.unVeil()
         }
 
         viewModel.searchResultEmpty.observe(viewLifecycleOwner){

@@ -5,13 +5,20 @@
     android:layout_height="match_parent">
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.skydoves.androidveil.VeilRecyclerFrameView
         android:id="@+id/userListRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/fragment_user_list_padding_top_bottom"
-        android:paddingBottom="@dimen/fragment_user_list_padding_top_bottom"
+
+        app:veilFrame_layout="@layout/list_item_user_skeleton"
+        app:veilFrame_veiled="true"
+        app:veilFrame_shimmerEnable="true"
+        app:veilFrame_baseColor="@color/fragment_user_list_skeleton_base_color"
+        app:veilFrame_highlightColor="@color/fragment_user_list_skeleton_highlight_color"
+        app:veilFrame_baseAlpha="1.0"
+        app:veilFrame_highlightAlpha="1.0"
+        app:veilFrame_radius="@dimen/list_item_user_avatar_size"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
