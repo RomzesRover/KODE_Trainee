@@ -15,7 +15,9 @@ import com.example.kodetrainee.domain.model.Department
 import com.example.kodetrainee.presentation.MainActivityViewModel
 import com.example.kodetrainee.presentation.user_list.adapter.UserListAdapter
 import com.example.kodetrainee.presentation.user_list_by_tabs.UserListByTabsViewModel
+import com.example.kodetrainee.presentation.views.CustomRefreshLayoutView
 import dagger.hilt.android.AndroidEntryPoint
+import me.dkzwm.widget.srl.RefreshingListenerAdapter
 
 @AndroidEntryPoint
 class UserListFragment: Fragment() {
@@ -52,6 +54,7 @@ class UserListFragment: Fragment() {
 
         startObserveActivityViewModel()
         initUserListRecyclerView()
+        initPullToRefresh()
         startObserveViewModel()
     }
 
@@ -72,10 +75,23 @@ class UserListFragment: Fragment() {
         }
     }
 
+    private fun initPullToRefresh(){
+        // Init pull to refresh for recycler
+        binding.smoothRefreshLayout.setHeaderView(CustomRefreshLayoutView(requireContext()))
+
+        binding.smoothRefreshLayout.setOnRefreshListener(object : RefreshingListenerAdapter(){
+            override fun onRefreshing() {
+                super.onRefreshing()
+                viewModel.updateUserList()
+            }
+        })
+    }
+
     private fun startObserveViewModel(){
         viewModel.userList.observe(viewLifecycleOwner) {
             userListAdapter.setupUserList(it)
             binding.userListRecyclerView.unVeil()
+            binding.smoothRefreshLayout.refreshComplete()
         }
 
         viewModel.searchResultEmpty.observe(viewLifecycleOwner){

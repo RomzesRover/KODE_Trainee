@@ -88,6 +88,10 @@ class UserListViewModel @Inject constructor(private val userRepository: UserRepo
         }
     }
 
+    fun updateUserList(){
+        getUserList()
+    }
+
     private fun getRequiredUserDepartment(){
         requiredUserDepartment = state.get<Department>(REQUIRED_DEPARTMENT_KEY) ?: Department.All()
     }

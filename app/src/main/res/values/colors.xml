@@ -30,4 +30,7 @@
     <color name="list_item_user_full_name_text_color">#050510</color>
     <color name="list_item_user_tag_text_color">#97979B</color>
     <color name="list_item_user_department_text_color">#55555C</color>
+
+    <color name="custom_refresh_layout_header_indicator_color">#6534FF</color>
+    <color name="custom_refresh_layout_header_track_color">#F7F7F8</color>
 </resources>
